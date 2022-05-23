@@ -1,0 +1,5 @@
+Esto es una prueba de escritura ya que es bastante simple y no es necesario
+alcanzar un nivel muy alto de complejidad para mostrar un ejemplo sencillo
+de como funciona el proyecto realmente ya no se que poner para seguir 
+rellenando este ejemplo quiza busque pruebas por internet para usar ya no
+quedan mas palabras esta es la ultima

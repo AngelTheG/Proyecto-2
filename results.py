@@ -12,7 +12,7 @@ class Results(Gtk.Window):
         #self.set_default_size(150, 100)
 
         # Imagen
-        img_snail = Gtk.Image().new_from_file("res/caracol.jpg")
+        img_snail = Gtk.Image().new_from_file("res/caracol.png")
         img_trex = Gtk.Image().new_from_file("res/trex.png")
         img_monkey = Gtk.Image().new_from_file("res/monkey.png")
         img_octopus = Gtk.Image().new_from_file("res/octopus.jpg")
@@ -43,17 +43,18 @@ class Results(Gtk.Window):
         #Calculo de palabras por minuto
         wpm = str(parent.words) + " palabras por minuto"
 
-        #Calculo de presicion
-
+        #Calculo de precision
+        acuracy = (parent.points*100)/parent.letters
+        acuracyLBL = str(acuracy) + "% de precisión"
 
         #Calculo de proporcion
-
+        prop = str(parent.points) + " / " + str(parent.letters)
 
         # Labels
         lbl_grade = Gtk.Label(label = grade)
         lbl_wpm = Gtk.Label(label = wpm)
-        lbl_precision = Gtk.Label(label = "% de precisión ")
-        lbl_proportion = Gtk.Label(label = "Buenas/Malas")
+        lbl_precision = Gtk.Label(label = acuracyLBL)
+        lbl_proportion = Gtk.Label(label = prop)
 
         # Contenedor de los labels de información
         infoBox = Gtk.Box()
@@ -68,8 +69,8 @@ class Results(Gtk.Window):
         mainBox = Gtk.Box()
         mainBox.set_orientation(Gtk.Orientation.HORIZONTAL)
 
-        mainBox.pack_start(img_grade, True, True, 0)
-        mainBox.pack_start(infoBox, True, True, 0)
+        mainBox.pack_start(img_grade, True, True, 30)
+        mainBox.pack_start(infoBox, True, True, 30)
 
         self.add(mainBox)
 

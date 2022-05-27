@@ -19,6 +19,9 @@ class CoreWindow(Gtk.Window):
         self.restarted = False
         self.words = 0
         self.fileText = ""
+        self.letters = 0
+        self.points = 0
+        self.wordRound = 0
 
         # Botón de carga de archivo
         btn_loadFile = Gtk.Button().new_from_icon_name("window-new", 6)
@@ -29,7 +32,7 @@ class CoreWindow(Gtk.Window):
         self.progressbar.set_fraction(1)
 
         # Botón reiniciar
-        btn_restart = Gtk.Button().new_from_icon_name("view-refresh", 6)
+        btn_restart = Gtk.Button().new_from_icon_name("process-stop", 6)
         btn_restart.connect("clicked", self.restart)
 
         # Textviewer
@@ -81,8 +84,20 @@ class CoreWindow(Gtk.Window):
         elif response == Gtk.ResponseType.CANCEL:
             print("Operación cancelada")
         
-        for character in self.file:
-            self.fileText += character
+        textWord = ""
+        self.textWords = []
+
+        for sentence in self.file:
+            for word in sentence:
+                if (word != " ") and (word not in "\n"):
+                    textWord += word
+
+                if word == " ":
+                    self.textWords.append(textWord)
+                    textWord = ""
+
+            self.fileText += sentence
+
 
         self.txt_test.get_buffer().set_text(self.fileText)
 
@@ -98,10 +113,43 @@ class CoreWindow(Gtk.Window):
         if self.unstarted:
             self.unstarted = False
             self.timeout_id = GLib.timeout_add(600, self.on_timeout, None)
-
+        
         # Detectar si la entrada está vacía
         if self.ent_entry != "":
             if " " in self.ent_entry.get_text():
+                
+                entryLetters = []
+                realLetters = []
+                for entryLetter in self.ent_entry.get_text():
+                    entryLetters.append(entryLetter)
+
+                for realLetter in self.textWords[self.wordRound]:
+                    realLetters.append(realLetter)
+                    self.letters += 1
+
+                #Caso en el que la entrada es mas corta que la palabra original
+                if len(entryLetters) < len(realLetters):
+                    i = 0
+                    for letter in entryLetters:
+                        if letter == realLetters[i]:
+                            self.points += 1
+                            i += 1
+
+                if len(entryLetters) > len(realLetters):
+                    i = 0
+                    for letter in realLetters:
+                        if letter == entryLetters[i]:
+                            self.points += 1
+                            i += 1
+
+                if len(entryLetters) == len(realLetters):
+                    i = 0
+                    for letter in entryLetters:
+                        if letter == realLetters[i]:
+                            self.points += 1
+                            i += 1
+
+
                 self.ent_entry.set_text("")
                 self.words += 1 
 
@@ -138,6 +186,7 @@ class CoreWindow(Gtk.Window):
 
     def displayResult(self):
         Results(self)
+        self.wordRound = 0
 
 
 

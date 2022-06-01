@@ -8,32 +8,47 @@ Para comenzar la ejecución del proyecto se debe iniciar el documento main por m
 
 ##### El terminal (recomendado):
 
-[===========Imagen=============]
+<a href="https://imgur.com/DNJGufz"><img src="https://i.imgur.com/DNJGufz.png" title="source: imgur.com" /></a>
 
 
 ## Primer Lanzamiento
 Al iniciar el documento main este va a generar una ventana:
-[===========Imagen=============]
+
+<a href="https://imgur.com/fUu33ws"><img src="https://i.imgur.com/fUu33ws.png" title="source: imgur.com" /></a>
 
 
 Lo primero que llama nuestra atención es un cuadro de texto en el que se avisa de cargar un archivo para iniciar el test.
-[===========Imagen=============]
+
+<a href="https://imgur.com/1rBwieo"><img src="https://i.imgur.com/1rBwieo.png" title="source: imgur.com" /></a>
 
 
 Esto se debe hacer por medio del botón.
-[===========Imagen=============]
+
+<a href="https://imgur.com/W4gRHQP"><img src="https://i.imgur.com/W4gRHQP.png" title="source: imgur.com" /></a>
 
 
 Al cargar el archivo se abrirá su contenido en la ventana de texto.
-[===========Imagen=============]
+
+<a href="https://imgur.com/LkzQ1WF"><img src="https://i.imgur.com/LkzQ1WF.png" title="source: imgur.com" /></a>
+
+El texto que se logra ver debajo de la entrada de texto son los puntajes obtenidos anteriormente.
+
+<a href="https://imgur.com/0B8YLOM"><img src="https://i.imgur.com/0B8YLOM.png" title="source: imgur.com" /></a>
 
 
 Una vez llegado hasta este momento, apenas se comience a escribir la barra superior comenzará a decrecer.
-[===========Imagen=============]
+
+<a href="https://imgur.com/AKdmwCA"><img src="https://i.imgur.com/AKdmwCA.png" title="source: imgur.com" /></a>
 
 
 Cuando la barrita se termine de consumir (al cabo de 1 minuto), se desplegará una ventana mostrando los resultados.
-[===========Imagen=============]
+
+<a href="https://imgur.com/GdlzOSV"><img src="https://i.imgur.com/GdlzOSV.png" title="source: imgur.com" /></a>
+
+
+Debajo de los resultados se encuentra una entrada de texto, donde se puede ingresar el nombre de la persona que tomó el test, consiguiente a la entrada de texto se encuentra el botón que guardará los datos del resultado obtenido.
+
+<a href="https://imgur.com/hO0ybFw"><img src="https://i.imgur.com/hO0ybFw.png" title="source: imgur.com" /></a>
 
 
 # Metodología
@@ -52,8 +67,12 @@ Cuando la barrita se termine de consumir (al cabo de 1 minuto), se desplegará u
  + ***"onTimeOut"*** Este método es activado constantemente y está vinculado a la barra de "des-carga" acciona la muestra del resultado cuando se acaba el tiempo y es forzada al accionar el *reset*.
 
  + ***"displayResult"*** Desplega la ventana con los resultados del test.
+ 
+ + ***"udpateScoreBoard"*** Actualiza los datos mostrados de los resultados anteriores.
 
 **Clase "Results"**: Como indica su nombre, es la ventana de los resultados, esta no posee métodos, ya que su función es únicamente mostrar los datos recolectados en el test anterior. 
+
+ + ***"saveResult"*** Guarda los datos en el archivo scoreBoard.
 
 
 ## Desarrollado por:
